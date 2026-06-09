@@ -29,7 +29,7 @@ function PaymentSuccess() {
 
     }, 3000);
 
-  }, []);
+  }, [navigate]);
 
   return (
 

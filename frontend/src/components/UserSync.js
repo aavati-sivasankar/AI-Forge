@@ -54,7 +54,7 @@ function UserSync() {
 
     syncUser();
 
-  }, [user]);
+  }, [user, isLoaded]);
 
   return null;
 }
