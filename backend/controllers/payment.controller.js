@@ -73,11 +73,10 @@ const createCheckoutSession =
           ],
 
           success_url:
-            "http://localhost:3000/payment-success",
+            "https://ai-forge-mu.vercel.app/payment-success?session_id={CHECKOUT_SESSION_ID}",
 
           cancel_url:
-            "http://localhost:3000/billing",
-
+            "https://ai-forge-mu.vercel.app/billing",
           metadata: {
 
             credits:
