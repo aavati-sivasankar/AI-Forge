@@ -256,11 +256,11 @@ function Dashboard() {
                 data.user.credits
               }
               minValue={0}
-              maxValue={100}
+              maxValue={1000}
               labels={{
                 valueLabel: {
                   formatTextValue: () =>
-                    `${data.user.credits}/100`,
+                    `${data.user.credits}`,
                   style: {
                     fill: "#000000",
                     fontSize: "34px",
@@ -277,17 +277,17 @@ function Dashboard() {
               arc={{
                 subArcs: [
                   {
-                    limit: 3,
+                    limit: 300,
                     color:
                       "#EA4228",
                   },
                   {
-                    limit: 80,
+                    limit: 800,
                     color:
                       "#F5CD19",
                   },
                   {
-                    limit: 100,
+                    limit: 1000,
                     color:
                       "#5BE12C",
                   },

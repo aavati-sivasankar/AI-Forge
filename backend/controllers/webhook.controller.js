@@ -131,7 +131,7 @@ const handleWebhook =
               credits,
 
           },
-          plan: "PRo",
+          plan: "PRO",
 
         },
 
