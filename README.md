@@ -1,6 +1,8 @@
 # 🚀 AI Forge - Full Stack AI SaaS Platform
 
-AI Forge is a modern AI-powered SaaS platform that provides multiple productivity tools powered by Artificial Intelligence. Users can generate articles, create blogs, analyze resumes, summarize PDFs, remove image backgrounds, and manage credits through a subscription-based system.
+AI Forge is a modern AI-powered SaaS platform that provides multiple productivity tools powered by Artificial Intelligence. Users can generate articles, create blogs, analyze resumes, summarize PDF documents, remove image backgrounds, and manage credits through a subscription-based system.
+
+Built with React, Node.js, Express, PostgreSQL (Neon), Prisma ORM, Stripe, and Google Gemini AI, AI Forge demonstrates a complete SaaS architecture including authentication, billing, AI integration, and cloud deployment.
 
 ---
 
@@ -12,7 +14,7 @@ AI Forge is a modern AI-powered SaaS platform that provides multiple productivit
 
 ## ✨ Features
 
-### 🤖 AI Tools
+### 🤖 AI-Powered Tools
 
 * AI Article Generator
 * AI Blog Generator
@@ -22,31 +24,32 @@ AI Forge is a modern AI-powered SaaS platform that provides multiple productivit
 
 ### 👤 User Management
 
-* User Authentication & Authorization
-* Secure Login & Registration
-* JWT-based Authentication
+* Secure User Registration & Login
+* JWT Authentication
+* Protected Routes
 * User Profile Management
 
 ### 💳 Subscription & Billing
 
-* Stripe Payment Integration
+* Stripe Checkout Integration
 * Credit-Based Usage System
 * Multiple Subscription Plans
-* Automatic Credit Allocation
-* Payment History Tracking
+* Automatic Credit Updates via Webhooks
+* Billing & Credit History
 
 ### 📊 Dashboard
 
-* Credits Monitoring
-* Usage Statistics
-* Generated Content History
-* Subscription Status
+* Remaining Credits Tracking
+* Current Subscription Plan
+* Tool Usage Monitoring
+* Generated Content Statistics
 
-### ☁️ Deployment
+### ☁️ Cloud Deployment
 
 * Frontend deployed on Vercel
 * Cloud-hosted Backend APIs
-* MongoDB Database Integration
+* Neon PostgreSQL Database
+* Production-ready Architecture
 
 ---
 
@@ -56,7 +59,7 @@ AI Forge is a modern AI-powered SaaS platform that provides multiple productivit
 
 * React.js
 * Vite
-* React Router
+* React Router DOM
 * Axios
 * Tailwind CSS
 
@@ -69,14 +72,15 @@ AI Forge is a modern AI-powered SaaS platform that provides multiple productivit
 
 ### Database
 
-* MongoDB
-* Mongoose
+* PostgreSQL (Neon)
+* Prisma ORM
 
-### AI Services
+### Artificial Intelligence
 
-* OpenAI API / Gemini API
-* PDF Processing APIs
-* Background Removal APIs
+* Google Gemini API
+* Resume Analysis AI
+* Content Generation AI
+* PDF Summarization AI
 
 ### Payments
 
@@ -86,7 +90,7 @@ AI Forge is a modern AI-powered SaaS platform that provides multiple productivit
 ### Deployment
 
 * Vercel
-* Render / Railway / VPS
+* Render / Railway
 
 ---
 
@@ -96,17 +100,28 @@ AI Forge is a modern AI-powered SaaS platform that provides multiple productivit
 AI-Forge/
 │
 ├── client/
-│   ├── src/
 │   ├── public/
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── context/
+│   │   ├── services/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   │
 │   └── package.json
 │
 ├── server/
 │   ├── controllers/
-│   ├── models/
 │   ├── routes/
 │   ├── middleware/
+│   ├── prisma/
+│   │   └── schema.prisma
 │   ├── config/
-│   └── server.js
+│   ├── utils/
+│   ├── server.js
+│   └── package.json
 │
 ├── screenshots/
 │
@@ -116,11 +131,11 @@ AI-Forge/
 
 ---
 
-## 🔑 Key Functionalities
+## 🔑 Core Functionalities
 
 ### AI Article Generator
 
-Generate high-quality articles from user prompts.
+Generate detailed, high-quality articles from user prompts using AI.
 
 ### AI Blog Generator
 
@@ -128,19 +143,19 @@ Create SEO-friendly blog content instantly.
 
 ### Resume Analyzer
 
-Upload resumes and receive AI-generated feedback and improvement suggestions.
+Upload resumes and receive AI-generated feedback, improvement suggestions, and ATS optimization tips.
 
 ### PDF Summarizer
 
-Extract and summarize key information from PDF documents.
+Extract and summarize important information from PDF documents.
 
 ### Background Remover
 
 Remove image backgrounds automatically using AI.
 
-### Credit System
+### Credit Management
 
-Each AI operation consumes credits based on the selected plan.
+Each AI operation consumes credits. Users can purchase additional credits through Stripe subscriptions.
 
 ---
 
@@ -150,10 +165,11 @@ Each AI operation consumes credits based on the selected plan.
 
 ```bash
 git clone https://github.com/yourusername/ai-forge.git
+
 cd ai-forge
 ```
 
-### Frontend Setup
+### Install Frontend Dependencies
 
 ```bash
 cd client
@@ -163,14 +179,14 @@ npm install
 npm run dev
 ```
 
-### Backend Setup
+### Install Backend Dependencies
 
 ```bash
 cd server
 
 npm install
 
-npm start
+npm run dev
 ```
 
 ---
@@ -182,75 +198,103 @@ Create a `.env` file inside the backend folder.
 ```env
 PORT=5000
 
-MONGODB_URI=your_mongodb_connection_string
+DATABASE_URL=your_neon_postgresql_connection_string
 
-JWT_SECRET=your_secret_key
+JWT_SECRET=your_jwt_secret
+
+GEMINI_API_KEY=your_gemini_api_key
 
 STRIPE_SECRET_KEY=your_stripe_secret_key
 
 STRIPE_WEBHOOK_SECRET=your_webhook_secret
 
-OPENAI_API_KEY=your_openai_api_key
-
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-
-CLOUDINARY_API_KEY=your_api_key
-
-CLOUDINARY_API_SECRET=your_api_secret
+BACKGROUND_REMOVE_API_KEY=your_background_removal_api_key
 ```
 
 ---
 
-## 💳 Stripe Webhook
+## 💳 Stripe Webhook Setup
 
-Local Development:
+### Local Development
 
 ```bash
 stripe listen --forward-to localhost:5000/api/webhook
 ```
 
-Production:
+### Production Webhook URL
 
-```bash
+```text
 https://your-backend-domain.com/api/webhook
 ```
 
+Stripe webhooks automatically update user credits after successful payments.
+
 ---
 
-## 📈 Future Improvements
+## 🚀 Deployment
 
-* AI Research Assistant
-* AI Code Generator
-* AI Chatbot
-* Team Collaboration
-* API Access for Developers
-* Analytics Dashboard
-* Usage Reports
+### Frontend
+
+Deploy frontend on Vercel:
+
+```bash
+npm run build
+```
+
+### Backend
+
+Deploy backend on:
+
+* Render
+* Railway
+* VPS
+
+### Database
+
+Configure PostgreSQL database using Neon.
 
 ---
 
 ## 🎯 Learning Outcomes
 
-Through this project, I gained practical experience in:
+This project helped me gain hands-on experience in:
 
 * Full Stack Web Development
-* SaaS Architecture
-* REST API Design
+* SaaS Product Development
 * Authentication & Authorization
+* REST API Development
+* PostgreSQL Database Design
+* Prisma ORM
 * Stripe Payment Integration
+* Webhook Handling
 * AI API Integration
-* MongoDB Database Management
-* Deployment & DevOps
+* Cloud Deployment
+* Production Architecture
+
+---
+
+## 🏆 Key Highlights
+
+* Built a complete SaaS application from scratch
+* Integrated multiple AI-powered productivity tools
+* Implemented secure authentication and authorization
+* Designed a credit-based subscription model
+* Integrated Stripe payments and webhooks
+* Used PostgreSQL with Prisma ORM
+* Deployed a production-ready application
 
 ---
 
 ## 👨‍💻 Author
 
-**Aavati Siva Sankar**
+### Aavati Siva Sankar
 
-* B.Tech CSE Student
-* Full Stack Developer
-* AI & Machine Learning Enthusiast
+Full Stack Developer | AI Enthusiast | Software Engineering Student
+
+### Connect With Me
+
+* GitHub: https://github.com/aavati-sivasankar
+* LinkedIn: www.linkedin.com/in/sivasankar-aavati-2884b927a
 
 ---
 
@@ -260,6 +304,6 @@ If you found this project useful, please consider giving it a ⭐ on GitHub.
 
 ---
 
-### Resume Tagline
+## 📄 Resume Description
 
-> Built a production-ready AI SaaS platform with authentication, Stripe subscriptions, credit management, AI-powered content generation, resume analysis, PDF summarization, and image background removal using React, Node.js, Express, MongoDB, and AI APIs.
+Built a production-ready AI SaaS platform featuring AI Article Generation, Blog Generation, Resume Analysis, PDF Summarization, and Background Removal. Implemented JWT authentication, Stripe payment integration, credit-based subscriptions, PostgreSQL database management using Prisma ORM, and deployed the application using modern cloud infrastructure.
