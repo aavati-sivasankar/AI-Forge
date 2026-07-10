@@ -6,11 +6,6 @@ Built with React, Node.js, Express, PostgreSQL (Neon), Prisma ORM, Stripe, and G
 
 ---
 
-## 📸 Preview
-
-![AI Forge Dashboard](./screenshots/dashboard.png)
-
----
 
 ## ✨ Features
 
@@ -295,6 +290,7 @@ Full Stack Developer | AI Enthusiast | Software Engineering Student
 
 * GitHub: https://github.com/aavati-sivasankar
 * LinkedIn: www.linkedin.com/in/sivasankar-aavati-2884b927a
+* Demo Link : https://ai-forge-virid.vercel.app/
 
 ---
 
